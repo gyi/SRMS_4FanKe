@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<!-- This mapping demonstrates content-based discrimination for the table-per-hierarchy 
+	mapping strategy, using a formula discriminator. -->
+
+<hibernate-mapping package="com.demo.domain">
+
+	<class name="Rec" table="srms_rec">
+
+		<id name="id">
+			<generator class="native" />
+		</id>
+		<property name="dateTime" />
+		<property name="quantity" />
+		<property name="price" />
+
+		<!-- user的属性，本类和User的多对一 -->
+		<many-to-one name="user" class="User" column="userId"></many-to-one>
+		
+		
+		<!-- shop的属性，本类和Shop的多对一-->
+		<many-to-one name="shop" class="Shop" column="shopId"></many-to-one>
+		
+
+		<!-- good的属性，本类和Good的多对一  -->
+		<many-to-one name="good" class="Good" column="goodId"></many-to-one>
+		
+
+	</class>
+
+</hibernate-mapping>

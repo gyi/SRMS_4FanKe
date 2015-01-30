@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<!-- 
+
+  This mapping demonstrates content-based discrimination for the
+  table-per-hierarchy mapping strategy, using a formula
+  discriminator.
+
+-->
+
+<hibernate-mapping 
+	package="com.demo.domain">
+	
+	<class name="Good" table="srms_good">
+		
+		<id name="id">
+			<generator class="native"/>
+		</id>
+		<property name="name"/>
+		<property name="price"/>
+		
+		<!-- record的属性，本类和Rec的一对多-->
+		<set name="recs">
+			<key column="goodId"></key>
+			<one-to-many class="Rec"/>
+		</set>
+		
+	</class>
+
+</hibernate-mapping>
